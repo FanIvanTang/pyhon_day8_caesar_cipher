@@ -84,7 +84,7 @@ def decode(encoded_text, shift_amount):
 # TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message.
 
 
-def caesar(plain_text, shift_amount, direction):
+def caesar(plain_text, shift_amount, cyphier_direction):
 
     result = []
     length = len(alphabet)
@@ -92,9 +92,9 @@ def caesar(plain_text, shift_amount, direction):
     for letter in plain_text:
         try:
             idx = alphabet.index(letter)
-            if direction == "encode":
+            if cyphier_direction == "encode":
                 idx += shift_amount
-            elif direction == "decode":
+            elif cyphier_direction == "decode":
                 idx -= shift_amount
             idx = idx % length
             result.append(alphabet[idx])
@@ -102,7 +102,7 @@ def caesar(plain_text, shift_amount, direction):
             result.append(letter)
 
     result = "".join(result)
-    print(f"The {direction} text is {result}")
+    print(f"The {cyphier_direction} text is {result}")
     return result
 
 
@@ -111,4 +111,4 @@ if __name__ == "__main__":
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
 
-    caesar(plain_text=text, shift_amount=shift, direction=direction)
+    caesar(plain_text=text, shift_amount=shift, cyphier_direction=direction)
